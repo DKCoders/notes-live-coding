@@ -20,6 +20,14 @@ produces:
 paths:
   /notes:
     x-swagger-router-controller: notes
+    get:
+      operationId: notesGet
+      description: Get all notes
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/NotesResponse"
     post:
       operationId: notesPost
       description: Create a note
@@ -72,6 +80,12 @@ definitions:
     properties:
       data:
         $ref: "#/definitions/Note"
+  NotesResponse:
+    properties:
+      data:
+        type: array
+        items:
+          $ref: "#/definitions/Note"
   ErrorResponse:
     required:
       - message

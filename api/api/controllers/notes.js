@@ -5,7 +5,11 @@ const notesPost = async (req, res, next) => {
     const newNote = await Note.create(note);
     res.json({data: newNote});
 };
-
+const notesGet = async (req, res, next) => {
+    const notes = await Note.find({});
+    res.json({data: notes});
+}
 module.exports = {
+    notesGet,
     notesPost
 };
