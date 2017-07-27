@@ -28,6 +28,10 @@ paths:
           description: Success
           schema:
             $ref: "#/definitions/NotesResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
     post:
       operationId: notesPost
       description: Create a note
@@ -38,6 +42,26 @@ paths:
           required: true
           schema:
             $ref: "#/definitions/NotePost"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/NoteResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /notes/{noteId}:
+    x-swagger-router-controller: notes
+    get:
+      operationId: notesGetById
+      description: Return a note by id
+      parameters:
+        - name: noteId
+          in: path
+          description: Id of the note
+          required: true
+          type: string
       responses:
         "200":
           description: Success
