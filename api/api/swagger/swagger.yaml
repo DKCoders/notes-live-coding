@@ -95,6 +95,24 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+    delete:
+      operationId: notesDelete
+      description: Delete a note
+      parameters:
+        - name: noteId
+          in: path
+          description: Id of the note
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/DeleteResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
@@ -134,6 +152,10 @@ definitions:
         type: array
         items:
           $ref: "#/definitions/Note"
+  DeleteResponse:
+    properties:
+      data:
+        type: boolean
   ErrorResponse:
     required:
       - message

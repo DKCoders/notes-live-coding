@@ -24,9 +24,20 @@ const notesPut = async (req, res, next) => {
     res.json({data: note})
     next();
 };
+const notesDelete = async (req, res, next) => {
+    const noteId = req.swagger.params.noteId.value;
+    const deleted = await Note.findByIdAndRemove(noteId);
+    if(deleted !== null){
+        res.json({data: true})
+    } else {
+        res.json({data: false});
+    }
+    next();
+}
 module.exports = {
     notesGet,
     notesGetById,
     notesPost,
-    notesPut
+    notesPut,
+    notesDelete
 };
