@@ -71,6 +71,30 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+    put:
+      operationId: notesPut
+      description: Update a note
+      parameters:
+        - name: noteId
+          in: path
+          description: Id of the note
+          required: true
+          type: string
+        - name: note
+          in: body
+          description: Note information
+          required: true
+          schema:
+            $ref: "#/definitions/NotePost"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/NoteResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
