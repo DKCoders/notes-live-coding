@@ -8,6 +8,7 @@
   "license": "",
   "main": "app.js",
   "dependencies": {
+    "mongoose": "^4.11.4",
     "restify": "^4.0.2",
     "swagger-restify-mw": "^0.7.0"
   },
