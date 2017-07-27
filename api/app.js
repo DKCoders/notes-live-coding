@@ -11,7 +11,7 @@ const config = {
 
 SwaggerRestify.create(config, function(err, swaggerRestify) {
     if (err) { throw err; }
-    mongoose.connect('mongodb://localhost:27017');
+    mongoose.connect('mongodb://localhost:27017/notes');
     mongoose.connection.once('open', () => {
 		console.log('Connection Established...');
     });
