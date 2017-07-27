@@ -20,6 +20,13 @@ const notesGetById = async (req, res, next) => {
 const notesPut = async (req, res, next) => {
     const noteId = req.swagger.params.noteId.value;
     const note = req.swagger.params.note.value;    
+    const updatedNote = await Note.findByIdAndUpdate(noteId, note, {new: true, overwrite: true});
+    res.json({data: note})
+    next();
+};
+const notesPatch = async (req, res, next) => {
+    const noteId = req.swagger.params.noteId.value;
+    const note = req.swagger.params.note.value;    
     const updatedNote = await Note.findByIdAndUpdate(noteId, note, {new: true});
     res.json({data: note})
     next();
@@ -39,5 +46,6 @@ module.exports = {
     notesGetById,
     notesPost,
     notesPut,
+    notesPatch,
     notesDelete
 };

@@ -95,6 +95,30 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+    patch:
+      operationId: notesPatch
+      description: Update partially a note
+      parameters:
+        - name: noteId
+          in: path
+          description: Id of the note
+          required: true
+          type: string
+        - name: note
+          in: body
+          description: Note information
+          required: true
+          schema:
+            $ref: "#/definitions/NotePatch"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/NoteResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
     delete:
       operationId: notesDelete
       description: Delete a note
@@ -133,6 +157,16 @@ definitions:
     required:
       - title
       - content
+    properties:
+      title:
+        type: string
+      content:
+        type: string
+      labels:
+        type: array
+        items:
+          type: string
+  NotePatch:
     properties:
       title:
         type: string
