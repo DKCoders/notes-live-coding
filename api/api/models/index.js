@@ -1,1 +1,2 @@
 require('./note');
+require('./label');

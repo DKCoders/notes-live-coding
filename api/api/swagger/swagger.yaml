@@ -137,6 +137,125 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  /labels:
+    x-swagger-router-controller: labels
+    get:
+      operationId: labelsGet
+      description: Get all labels
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/LabelsResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      operationId: labelsPost
+      description: Create a label
+      parameters:
+        - name: label
+          in: body
+          description: Label information
+          required: true
+          schema:
+            $ref: "#/definitions/Label"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/LabelResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /labels/{labelId}:
+    x-swagger-router-controller: labels
+    get:
+      operationId: labelsGetById
+      description: Return a label by id
+      parameters:
+        - name: labelId
+          in: path
+          description: Id of the label
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/LabelResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      operationId: labelsPut
+      description: Update a label
+      parameters:
+        - name: labelId
+          in: path
+          description: Id of the label
+          required: true
+          type: string
+        - name: label
+          in: body
+          description: Label information
+          required: true
+          schema:
+            $ref: "#/definitions/Label"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/LabelResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    patch:
+      operationId: labelsPatch
+      description: Update partially a label
+      parameters:
+        - name: labelId
+          in: path
+          description: Id of the label
+          required: true
+          type: string
+        - name: label
+          in: body
+          description: Label information
+          required: true
+          schema:
+            $ref: "#/definitions/Label"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/LabelResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    delete:
+      operationId: labelsDelete
+      description: Delete a label
+      parameters:
+        - name: labelId
+          in: path
+          description: Id of the label
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/DeleteResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
@@ -186,6 +305,24 @@ definitions:
         type: array
         items:
           $ref: "#/definitions/Note"
+  Label:
+    required:
+      - label
+    properties:
+      _id:
+        type: string
+      label:
+        type: string
+  LabelResponse:
+    properties:
+      data:
+        $ref: "#/definitions/Label"
+  LabelsResponse:
+    properties:
+      data:
+        type: array
+        items:
+          $ref: "#/definitions/Label"
   DeleteResponse:
     properties:
       data:
