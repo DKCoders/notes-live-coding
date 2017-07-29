@@ -1,44 +1,33 @@
-const mongoose = require('mongoose');
-const Note = mongoose.model('Note');
+const NoteService = require('../services/note');
 const notesPost = async (req, res, next) => {
     const note = req.swagger.params.note.value;
-    const newNote = await Note.create(note);
-    res.json({data: newNote});
+    res.json(await NoteService.create(note));
     next();
 };
 const notesGet = async (req, res, next) => {
-    const notes = await Note.find({});
-    res.json({data: notes});
+    res.json(await NoteService.get({}));
     next();    
 }
 const notesGetById = async (req, res, next) => {
     const noteId = req.swagger.params.noteId.value;
-    const note = await Note.findById(noteId);
-    res.json({data: note})
+    res.json(await NoteService.getById(noteId));
     next();    
 };
 const notesPut = async (req, res, next) => {
     const noteId = req.swagger.params.noteId.value;
     const note = req.swagger.params.note.value;    
-    const updatedNote = await Note.findByIdAndUpdate(noteId, note, {new: true, overwrite: true});
-    res.json({data: note})
+    res.json(await NoteService.updateById(noteId, note, {overwrite: true}));
     next();
 };
 const notesPatch = async (req, res, next) => {
     const noteId = req.swagger.params.noteId.value;
     const note = req.swagger.params.note.value;    
-    const updatedNote = await Note.findByIdAndUpdate(noteId, note, {new: true});
-    res.json({data: note})
+    res.json(await NoteService.updateById(noteId, note));
     next();
 };
 const notesDelete = async (req, res, next) => {
     const noteId = req.swagger.params.noteId.value;
-    const deleted = await Note.findByIdAndRemove(noteId);
-    if(deleted !== null){
-        res.json({data: true})
-    } else {
-        res.json({data: false});
-    }
+    res.json(await NoteService.remove(noteId));
     next();
 }
 module.exports = {
