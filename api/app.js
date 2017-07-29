@@ -2,6 +2,7 @@ const SwaggerRestify = require('swagger-restify-mw');
 const restify = require('restify');
 const app = restify.createServer();
 const mongoose = require('mongoose');
+const cors = require('cors');
 require('./api/models');
 module.exports = app; // for testing
 
@@ -15,6 +16,7 @@ SwaggerRestify.create(config, function(err, swaggerRestify) {
     mongoose.connection.once('open', () => {
 		console.log('Connection Established...');
     });
+    app.use(cors());
     swaggerRestify.register(app);
     const port = process.env.PORT || 10010;
     app.listen(port);
