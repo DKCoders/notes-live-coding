@@ -2,8 +2,20 @@ const mongoose = require('mongoose');
 const Note = mongoose.model('Note');
 
 const create = async note => ({data: await Note.create(note)});
-const get = async query => ({data: await Note.find(query)});
-const getById = async id => ({data: await Note.findById(id)});
+const get = async (query, populate = false) => {
+    let promise = Note.find(query);
+    if(populate){
+        promise = promise.populate('labels');    
+    }
+    return {data: await promise};
+};
+const getById = async (id, populate = false) => {
+    let promise = Note.findById(id);
+    if(populate){
+        promise = promise.populate('labels');    
+    }
+    return {data: await promise};
+};
 const updateById = async (id, note, options = {}) => {
     options.new = true;
     return {data: await Note.findByIdAndUpdate(id, note, options)}

@@ -5,12 +5,14 @@ const notesPost = async (req, res, next) => {
     next();
 };
 const notesGet = async (req, res, next) => {
-    res.json(await NoteService.get({}));
+    const populate = req.swagger.params.populate.value;    
+    res.json(await NoteService.get({}, populate));
     next();    
 }
 const notesGetById = async (req, res, next) => {
     const noteId = req.swagger.params.noteId.value;
-    res.json(await NoteService.getById(noteId));
+    const populate = req.swagger.params.populate.value;
+    res.json(await NoteService.getById(noteId, populate));
     next();    
 };
 const notesPut = async (req, res, next) => {

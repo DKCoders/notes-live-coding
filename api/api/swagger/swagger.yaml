@@ -23,6 +23,11 @@ paths:
     get:
       operationId: notesGet
       description: Get all notes
+      parameters:
+        - name: populate
+          in: query
+          type: boolean
+          default: false
       responses:
         "200":
           description: Success
@@ -62,6 +67,10 @@ paths:
           description: Id of the note
           required: true
           type: string
+        - name: populate
+          in: query
+          type: boolean
+          default: false
       responses:
         "200":
           description: Success
