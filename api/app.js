@@ -1,3 +1,4 @@
+require('dotenv').config();
 const SwaggerRestify = require('swagger-restify-mw');
 const restify = require('restify');
 const app = restify.createServer();
@@ -12,7 +13,7 @@ const config = {
 
 SwaggerRestify.create(config, function(err, swaggerRestify) {
     if (err) { throw err; }
-    mongoose.connect('mongodb://localhost:27017/notes');
+    mongoose.connect(process.env.MONGODB);
     mongoose.connection.once('open', () => {
 		console.log('Connection Established...');
     });
