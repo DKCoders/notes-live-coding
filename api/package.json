@@ -15,11 +15,14 @@
     "swagger-restify-mw": "^0.7.0"
   },
   "devDependencies": {
+    "faker": "^4.1.0",
     "should": "^7.1.0",
     "supertest": "^1.0.0"
   },
   "scripts": {
     "start": "node app.js",
-    "test": "swagger project test"
+    "test": "swagger project test",
+    "mock": "node mock-data.js",
+    "remove": "node remove-data.js"
   }
 }
