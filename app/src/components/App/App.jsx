@@ -7,6 +7,15 @@ import NotesWrapper from '../NotesWrapper';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super();
+    this.props = props;
+  }
+
+  componentDidMount() {
+    this.props.fetchLabels();
+  }
+
   render() {
     return (
       <React.Fragment>

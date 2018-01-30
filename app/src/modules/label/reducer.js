@@ -1,4 +1,4 @@
-import update from 'inmutability-helper';
+import update from 'immutability-helper';
 import { UPDATE_LABELS } from './types';
 
 export const initialState = {
