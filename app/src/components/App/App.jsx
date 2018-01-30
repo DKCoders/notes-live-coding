@@ -1,20 +1,28 @@
 import React, { Component } from 'react';
-import logo from '../../logo.svg';
+import NavBar from '../NavBar';
+import Menu from '../Menu';
+import NewNote from '../NewNote';
+import NotesWrapper from '../NotesWrapper';
+
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-          <button className="button is-black">Test</button>
-        </p>
-      </div>
+      <React.Fragment>
+        <NavBar/>
+        <div className="container">
+          <div className="columns">
+            <div className="column is-3">
+              <Menu />
+            </div>
+            <div className="column is-9">
+              <NewNote />
+              <NotesWrapper />
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
     );
   }
 }
