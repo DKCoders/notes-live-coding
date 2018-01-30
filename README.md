@@ -17,3 +17,4 @@ Pasos Parte 1 (Backend):
 
 Pasos Parte 2 (Frontend):
 * 2.0 Scaffolding
+* 2.1 Basic Layout and Components
