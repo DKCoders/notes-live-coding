@@ -20,3 +20,4 @@ Pasos Parte 2 (Frontend):
 * 2.1 Basic Layout and Components
 * 2.2 Label redux module and sagas
 * 2.3 Labels Menu
+* 2.4 Note module and NoteCard component
