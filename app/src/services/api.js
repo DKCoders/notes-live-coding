@@ -6,4 +6,9 @@ export default class Api {
     const response = await axios.get(`${apiUri}labels/`);
     return response.data.data;
   }
+
+  static async fetchNotes() {
+    const response = await axios.get(`${apiUri}notes`);
+    return response.data.data;
+  }
 }
