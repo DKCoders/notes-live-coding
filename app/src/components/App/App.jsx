@@ -3,7 +3,7 @@ import NavBar from '../../containers/navBarContainer';
 import Menu from '../../containers/menuContainer';
 import NewNote from '../NewNote';
 import NotesWrapper from '../../containers/notesWrapperContainer';
-
+import ModalForm from "../../containers/modalFormContainer";
 import './App.css';
 
 class App extends Component {
@@ -32,6 +32,7 @@ class App extends Component {
             </div>
           </div>
         </div>
+        <ModalForm />
       </React.Fragment>
     );
   }
