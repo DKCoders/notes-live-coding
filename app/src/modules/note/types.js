@@ -1,0 +1,3 @@
+export const UPDATE_NOTES = 'UPDATE_NOTES';
+export const FETCH_NOTES = 'FETCH_NOTES';
+export const ERROR_FETCH_NOTES = 'ERROR_FETCH_NOTES';
