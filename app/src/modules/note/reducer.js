@@ -1,4 +1,4 @@
-import {UPDATE_NOTES} from "../types";
+import {UPDATE_NOTES} from "./types";
 import update from "immutability-helper/index";
 
 export const initialState = {
