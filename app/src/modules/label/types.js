@@ -1,3 +1,4 @@
 export const UPDATE_LABELS = 'UPDATE_LABELS';
 export const FETCH_LABELS = 'FETCH_LABELS';
 export const ERROR_FETCH_LABELS = 'ERROR_FETCH_LABELS';
+export const SELECT_LABEL = 'SELECT_LABEL';
