@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NotesWrapper = () => {
+const NotesWrapper = ({ noteIds }) => {
   const cardsData = [...Array(5)];
   const cards = cardsData.map((card, index) => (
       <div className="column is-one-third">

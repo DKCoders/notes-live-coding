@@ -6,6 +6,9 @@ const mapDispatchToProps = dispatch => ({
   fetchLabels() {
     dispatch(actions.label.fetchLabels());
   },
+  fetchNotes() {
+    dispatch(actions.note.fetchNotes());
+  },
 });
 
 const appContainer = connect(null, mapDispatchToProps)(App);

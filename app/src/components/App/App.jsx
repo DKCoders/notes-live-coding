@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import NavBar from '../NavBar';
 import Menu from '../../containers/menuContainer';
 import NewNote from '../NewNote';
-import NotesWrapper from '../NotesWrapper';
+import NotesWrapper from '../../containers/notesWrapperContainer';
 
 import './App.css';
 
@@ -14,6 +14,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.fetchLabels();
+    this.props.fetchNotes();
   }
 
   render() {
