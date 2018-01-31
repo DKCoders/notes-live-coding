@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from '../NavBar';
-import Menu from '../Menu';
+import Menu from '../../containers/menuContainer';
 import NewNote from '../NewNote';
 import NotesWrapper from '../NotesWrapper';
 
