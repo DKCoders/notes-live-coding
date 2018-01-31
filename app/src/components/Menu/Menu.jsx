@@ -1,11 +1,15 @@
 import React from 'react';
 
 const Menu = ({ labels, selectLabel, selectedLabelId }) => {
+  const selectLabelMaker = (labelId) => {
+    const param = labelId !== selectedLabelId ? labelId : null;
+    return () => selectLabel(param);
+  };
   const labelList = labels.map(label => (
     <li key={label._id}>
       <a
         className={selectedLabelId === label._id ? 'is-active' : ''}
-        onClick={() => selectLabel(label._id)}
+        onClick={selectLabelMaker(label._id)}
       >
         {label.label}
       </a>
