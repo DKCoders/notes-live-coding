@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavBar from '../NavBar';
+import NavBar from '../../containers/navBarContainer';
 import Menu from '../../containers/menuContainer';
 import NewNote from '../NewNote';
 import NotesWrapper from '../../containers/notesWrapperContainer';
