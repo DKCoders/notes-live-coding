@@ -1,5 +1,6 @@
 # notes-live-coding
 Repositorio del live coding de Notes and Labels
+
 Pasos Parte 1 (Backend):
 * 1.0 Scaffolding
 * 1.1 Conectar al Mongo y Modelo de Note
@@ -21,3 +22,4 @@ Pasos Parte 2 (Frontend):
 * 2.2 Label redux module and sagas
 * 2.3 Labels Menu
 * 2.4 Note module and NoteCard component
+* 2.5 Basic Filters
