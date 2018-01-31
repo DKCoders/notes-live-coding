@@ -1,9 +1,14 @@
-import { UPDATE_NOTES, SET_SEARCH_TERM } from "./types";
+import {
+  UPDATE_NOTES,
+  SET_SEARCH_TERM,
+  UPDATE_EDITABLE_NOTE,
+} from "./types";
 import update from "immutability-helper/index";
 
 export const initialState = {
   notes: {},
   searchTerm: '',
+  editableNote: null,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -14,9 +19,13 @@ export const reducer = (state = initialState, action) => {
       });
     }
     case SET_SEARCH_TERM: {
-      console.log(action.searchTerm);
       return update(state, {
         searchTerm: { $set: action.searchTerm },
+      });
+    }
+    case UPDATE_EDITABLE_NOTE: {
+      return update(state, {
+        editableNote: { $set: action.note },
       });
     }
     default:
