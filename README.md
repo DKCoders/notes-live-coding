@@ -19,3 +19,4 @@ Pasos Parte 2 (Frontend):
 * 2.0 Scaffolding
 * 2.1 Basic Layout and Components
 * 2.2 Label redux module and sagas
+* 2.3 Labels Menu
