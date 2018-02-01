@@ -24,3 +24,4 @@ Pasos Parte 2 (Frontend):
 * 2.4 Note module and NoteCard component
 * 2.5 Basic Filters
 * 2.6 Edit and Add Notes
+* 2.7 Delete Notes
