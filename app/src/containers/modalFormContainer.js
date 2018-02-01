@@ -10,6 +10,9 @@ const mapDispatchToProps = dispatch => ({
   updateEditableNote(note) {
     dispatch(actions.note.updateEditableNote(note));
   },
+  saveNote(note) {
+    dispatch(actions.note.saveNote(note));
+  },
 });
 const modalFormContainer = connect(mapStateToProps, mapDispatchToProps)(ModalForm);
 

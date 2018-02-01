@@ -11,4 +11,11 @@ export default class Api {
     const response = await axios.get(`${apiUri}notes`);
     return response.data.data;
   }
+
+  static async saveNote(note) {
+    const response = note && note._id
+      ? await axios.put(`${apiUri}notes/${note._id}`, note)
+      : await axios.post(`${apiUri}notes`, note);
+    return response.data.data;
+  }
 }

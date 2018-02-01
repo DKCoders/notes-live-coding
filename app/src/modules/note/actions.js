@@ -5,6 +5,7 @@ import {
   SET_SEARCH_TERM,
   UPDATE_EDITABLE_NOTE,
   SAVE_NOTE,
+  ERROR_SAVE_NOTE,
 } from './types';
 
 export const updateNotes = notes => ({
@@ -25,4 +26,4 @@ export const saveNote = note => ({
   type: SAVE_NOTE,
   note,
 });
-
+export const errorSaveNote = () => ({ type: ERROR_SAVE_NOTE });

@@ -1,9 +1,22 @@
 import React from 'react';
 
-const ModalForm = ({ note, updateEditableNote }) => {
+const requiredFields = ['title', 'content'];
+
+const ModalForm = ({ note, updateEditableNote, saveNote }) => {
   if (!note) {
     return null;
   }
+  const missingFields = requiredFields.filter(field => !note[field]);
+  const alert = !missingFields.length
+    ? null
+    : (
+      <div className="notification is-danger">
+        {`Fields required: ${missingFields.join(', ')}`}
+      </div>
+    );
+  const saveModal = () => {
+    saveNote(note);
+  };
   const cancelModal = () => updateEditableNote(null);
   return (
     <div className="modal is-active">
@@ -33,9 +46,10 @@ const ModalForm = ({ note, updateEditableNote }) => {
               />
             </div>
           </div>
+          {alert}
           <div className="field is-grouped">
             <div className="control">
-              <button className="button is-link" onClick={cancelModal}>{!note._id ? 'Add' : 'Save'}</button>
+              <button disabled={missingFields.length} className="button is-link" onClick={saveModal}>{!note._id ? 'Add' : 'Save'}</button>
             </div>
             <div className="control">
               <button className="button" onClick={cancelModal}>Cancel</button>

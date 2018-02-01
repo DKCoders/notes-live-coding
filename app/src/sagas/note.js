@@ -1,5 +1,5 @@
 import { all, takeEvery, put, call } from 'redux-saga/effects';
-import { FETCH_NOTES } from '../modules/note/types';
+import { FETCH_NOTES, SAVE_NOTE } from '../modules/note/types';
 import { actions } from '../modules';
 import api from '../services/api';
 
@@ -19,8 +19,27 @@ function* watchFetchNotes() {
   yield takeEvery(FETCH_NOTES, fetchNotes);
 }
 
+function* saveNote({ note }) {
+  try {
+    const data = yield call(api.saveNote, note);
+    const notes = {
+      [data._id]: data,
+    };
+    yield put(actions.note.updateNotes(notes));
+    yield put(actions.note.updateEditableNote(null));
+  } catch (error) {
+    yield put(actions.note.errorSaveNote());
+    throw (error)
+  }
+}
+
+function* watchSaveNote() {
+  yield takeEvery(SAVE_NOTE, saveNote);
+}
+
 export default function* noteSaga() {
   yield all([
     watchFetchNotes(),
+    watchSaveNote(),
   ]);
 };
