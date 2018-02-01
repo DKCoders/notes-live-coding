@@ -1,4 +1,6 @@
 import React from 'react';
+import LabelTag from '../../containers/labelTagContainer';
+import LabelSelect from '../../containers/labelSelectContainer';
 
 const requiredFields = ['title', 'content'];
 
@@ -6,6 +8,20 @@ const ModalForm = ({ note, updateEditableNote, saveNote }) => {
   if (!note) {
     return null;
   }
+  const saveModal = () => {
+    saveNote(note);
+  };
+  const cancelModal = () => updateEditableNote(null);
+  const onAddLabel = (labelIdAdded) => {
+    if (labelIdAdded) {
+      const labels = note.labels.concat(labelIdAdded);
+      updateEditableNote({ ...note, labels });
+    }
+  };
+  const onDeleteLabel = (labelIdRemoved) => {
+    const labels = note.labels.filter(labelId => labelId !== labelIdRemoved);
+    updateEditableNote({...note, labels });
+  };
   const missingFields = requiredFields.filter(field => !note[field]);
   const alert = !missingFields.length
     ? null
@@ -14,10 +30,14 @@ const ModalForm = ({ note, updateEditableNote, saveNote }) => {
         {`Fields required: ${missingFields.join(', ')}`}
       </div>
     );
-  const saveModal = () => {
-    saveNote(note);
-  };
-  const cancelModal = () => updateEditableNote(null);
+  const tags = note.labels.map(labelId => (
+    <LabelTag
+      labelId={labelId}
+      onDelete={onDeleteLabel}
+      key={labelId}
+      style={{marginRight: '5px'}}
+    />
+  ));
   return (
     <div className="modal is-active">
       <div className="modal-background" />
@@ -46,6 +66,16 @@ const ModalForm = ({ note, updateEditableNote, saveNote }) => {
               />
             </div>
           </div>
+          <div className="field">
+            <label className="label">Labels</label>
+            <div className="control">
+              {tags}
+              <LabelSelect
+                blackList={note.labels}
+                onChange={onAddLabel}
+              />
+            </div>
+          </div>
           {alert}
           <div className="field is-grouped">
             <div className="control">
@@ -57,7 +87,7 @@ const ModalForm = ({ note, updateEditableNote, saveNote }) => {
           </div>
         </div>
       </div>
-      <button className="modal-close is-large" aria-label="close" />
+      <button className="modal-close is-large" onClick={cancelModal} aria-label="close" />
     </div>
   );
 };
