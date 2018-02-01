@@ -40,7 +40,7 @@ const ModalForm = ({ note, updateEditableNote, saveNote }) => {
   ));
   return (
     <div className="modal is-active">
-      <div className="modal-background" />
+      <div className="modal-background" onClick={cancelModal} />
       <div className="modal-content">
         <div className="box">
           <div className="field">
