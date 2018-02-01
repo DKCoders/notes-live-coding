@@ -6,6 +6,9 @@ import {
   UPDATE_EDITABLE_NOTE,
   SAVE_NOTE,
   ERROR_SAVE_NOTE,
+  DELETE_NOTE,
+  SUCCESS_DELETE_NOTE,
+  ERROR_DELETE_NOTE,
 } from './types';
 
 export const updateNotes = notes => ({
@@ -27,3 +30,12 @@ export const saveNote = note => ({
   note,
 });
 export const errorSaveNote = () => ({ type: ERROR_SAVE_NOTE });
+export const deleteNote = note => ({
+  type: DELETE_NOTE,
+  note,
+});
+export const successDeleteNote = noteId => ({
+  type: SUCCESS_DELETE_NOTE,
+  noteId,
+});
+export const errorDeleteNote = () => ({ type: ERROR_DELETE_NOTE });

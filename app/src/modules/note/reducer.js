@@ -2,6 +2,7 @@ import {
   UPDATE_NOTES,
   SET_SEARCH_TERM,
   UPDATE_EDITABLE_NOTE,
+  SUCCESS_DELETE_NOTE,
 } from "./types";
 import update from "immutability-helper/index";
 
@@ -26,6 +27,17 @@ export const reducer = (state = initialState, action) => {
     case UPDATE_EDITABLE_NOTE: {
       return update(state, {
         editableNote: { $set: action.note },
+      });
+    }
+    case SUCCESS_DELETE_NOTE: {
+      return update(state, {
+        notes: {
+          $apply: function(obj) {
+            const copyNotes = {...obj};
+            delete copyNotes[action.noteId];
+            return copyNotes;
+          },
+        },
       });
     }
     default:

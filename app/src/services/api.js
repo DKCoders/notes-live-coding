@@ -18,4 +18,9 @@ export default class Api {
       : await axios.post(`${apiUri}notes`, note);
     return response.data.data;
   }
+
+  static async deleteNote(noteId) {
+    const response = await axios.delete(`${apiUri}notes/${noteId}`);
+    return response.data;
+  }
 }

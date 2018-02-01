@@ -1,7 +1,7 @@
 import React from 'react';
 import LabelTag from '../../containers/labelTagContainer';
 
-const NoteCard = ({ note, updateEditableNote }) => {
+const NoteCard = ({ note, updateEditableNote, deleteNote }) => {
   const labels = note.labels.map(labelId => (
     <LabelTag labelId={labelId} key={labelId} />
   ));
@@ -23,6 +23,9 @@ const NoteCard = ({ note, updateEditableNote }) => {
       <footer className="card-footer">
         <p className="card-footer-item">
           <button className="button" onClick={() => updateEditableNote(note)}>Edit</button>
+        </p>
+        <p className="card-footer-item">
+          <button className="button" onClick={() => deleteNote(note)}>Delete</button>
         </p>
       </footer>
     </div>
