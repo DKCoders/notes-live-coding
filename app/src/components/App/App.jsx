@@ -27,7 +27,7 @@ class App extends Component {
               <Menu />
             </div>
             <div className="column is-9">
-              <NewNote />
+              <NewNote onClick={this.props.updateEditableNote} />
               <NotesWrapper />
             </div>
           </div>

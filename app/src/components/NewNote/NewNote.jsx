@@ -1,9 +1,20 @@
 import React from 'react';
 
-const NewNote = () => (
+const newNoteTemplate = {
+  title: '',
+  content: '',
+  labels: [],
+};
+
+const NewNote = ({ onClick }) => (
   <div className="field" style={{ paddingTop: '5px'}}>
     <div className="control">
-      <input className="input" type="text" placeholder="New note..." />
+      <input
+        className="input"
+        type="text"
+        placeholder="New note..."
+        onClick={() => onClick(newNoteTemplate)}
+      />
     </div>
   </div>
 );
