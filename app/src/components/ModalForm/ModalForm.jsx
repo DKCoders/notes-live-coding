@@ -69,7 +69,9 @@ const ModalForm = ({ note, updateEditableNote, saveNote }) => {
           <div className="field">
             <label className="label">Labels</label>
             <div className="control">
-              {tags}
+              <div className="tags">
+                {tags}
+              </div>
               <LabelSelect
                 blackList={note.labels}
                 onChange={onAddLabel}

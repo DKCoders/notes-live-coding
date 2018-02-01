@@ -9,7 +9,7 @@ const LabelTag = ({ label, onDelete = false }) => {
     />
   );
   return (
-    <span className="tag" style={{marginRight: '5px', marginBottom: '5px'}}>
+    <span className="tag">
       {label.label}
       {button}
     </span>

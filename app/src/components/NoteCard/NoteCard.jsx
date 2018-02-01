@@ -17,7 +17,9 @@ const NoteCard = ({ note, updateEditableNote, deleteNote }) => {
           {note.content}
         </div>
         <div className="content">
-          {labels}
+          <div className="tags">
+            {labels}
+          </div>
         </div>
       </div>
       <footer className="card-footer">

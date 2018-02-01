@@ -18,7 +18,10 @@ const Menu = ({ labels, selectLabel, selectedLabelId }) => {
 
   return (
     <aside className="menu" style={{paddingTop: '5px'}}>
-      <p className="menu-labels">Labels</p>
+      <p className="menu-labels" style={{marginBottom: '5px'}}>
+        Labels
+        <button className="button is-small" style={{float: 'right'}}>Edit</button>
+      </p>
       <ul className="menu-list">
         {labelList}
       </ul>
