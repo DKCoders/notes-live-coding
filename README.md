@@ -25,3 +25,4 @@ Pasos Parte 2 (Frontend):
 * 2.5 Basic Filters
 * 2.6 Edit and Add Notes
 * 2.7 Delete Notes
+* 2.8 Edit and Add Labels
