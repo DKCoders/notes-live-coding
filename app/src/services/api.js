@@ -7,6 +7,13 @@ export default class Api {
     return response.data.data;
   }
 
+  static async saveLabel(label) {
+    const response = label && label._id
+      ? await axios.put(`${apiUri}labels/${label._id}`, label)
+      : await axios.post(`${apiUri}labels`, label);
+    return response.data.data;
+  }
+
   static async fetchNotes() {
     const response = await axios.get(`${apiUri}notes`);
     return response.data.data;

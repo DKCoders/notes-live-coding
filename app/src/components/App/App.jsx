@@ -4,6 +4,7 @@ import Menu from '../../containers/menuContainer';
 import NewNote from '../NewNote';
 import NotesWrapper from '../../containers/notesWrapperContainer';
 import ModalForm from "../../containers/modalFormContainer";
+import ModalLabels from "../../containers/modalLabelsContainer";
 import './App.css';
 
 class App extends Component {
@@ -18,6 +19,9 @@ class App extends Component {
   }
 
   render() {
+    const modalLabel = !this.props.modalLabel ? null : (
+      <ModalLabels />
+    );
     return (
       <React.Fragment>
         <NavBar/>
@@ -33,6 +37,7 @@ class App extends Component {
           </div>
         </div>
         <ModalForm />
+        {modalLabel}
       </React.Fragment>
     );
   }

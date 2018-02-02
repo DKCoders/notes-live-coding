@@ -11,6 +11,9 @@ const mapDispatchToProps = dispatch => ({
   selectLabel(labelId) {
     dispatch(actions.label.selectLabel(labelId));
   },
+  updateModalLabel(value) {
+    dispatch(actions.label.updateModalLabel(value));
+  },
 });
 
 const menuContainer = connect(mapStateToProps, mapDispatchToProps)(Menu);
